@@ -4,18 +4,18 @@ Public binaries for the **`ez-cdc`** command-line tool — the operator and
 verification CLI for the [dbmazz](https://github.com/ez-cdc/dbmazz)
 PostgreSQL Change Data Capture daemon.
 
-This repository contains only release artifacts (binaries + checksums).
-For dbmazz documentation, source code, and issues, see
-[ez-cdc/dbmazz](https://github.com/ez-cdc/dbmazz).
+This repository contains the public installer (`install.sh`) and release
+artifacts (binaries + checksums). For dbmazz documentation, source code,
+and issues, see [ez-cdc/dbmazz](https://github.com/ez-cdc/dbmazz).
 
 ---
 
 ## Install
 
-The recommended way is the one-liner installer hosted in the dbmazz repo:
+The recommended way is the one-liner installer:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ez-cdc/dbmazz/main/install.sh | sh
+curl -sSL https://raw.githubusercontent.com/ez-cdc/ez-cdc-cli-releases/main/install.sh | sh
 ```
 
 The installer auto-detects your OS and architecture, downloads the matching
@@ -29,7 +29,7 @@ variable, or change the install directory with `EZ_CDC_INSTALL_DIR`:
 ```bash
 EZ_CDC_VERSION=v0.1.0 \
 EZ_CDC_INSTALL_DIR=/opt/bin \
-  curl -sSL https://raw.githubusercontent.com/ez-cdc/dbmazz/main/install.sh | sh
+  curl -sSL https://raw.githubusercontent.com/ez-cdc/ez-cdc-cli-releases/main/install.sh | sh
 ```
 
 ### Manual install
@@ -89,9 +89,9 @@ ez-cdc quickstart --source my-pg --sink my-warehouse      # spin up dbmazz + liv
 
 Press `t` in the dashboard to generate live traffic, `q` to exit.
 
-The CLI also ships with a 13-check end-to-end verification harness that
-validates every supported sink (schema, snapshot integrity, CDC
-operations, type fidelity, idempotency drift):
+The CLI also ships with an end-to-end verification harness that validates
+every supported sink (schema, snapshot integrity, CDC operations, type
+fidelity, idempotency drift):
 
 ```bash
 ez-cdc verify --source my-pg --sink my-warehouse           # full suite
@@ -107,13 +107,9 @@ Release tags: `vMAJOR.MINOR.PATCH`. Each release publishes 4 binaries
 (`ez-cdc-linux-amd64`, `ez-cdc-linux-arm64`, `ez-cdc-darwin-amd64`,
 `ez-cdc-darwin-arm64`) plus a `SHA256SUMS` file.
 
-Release notes are auto-generated from conventional commits (feat / fix /
-refactor / perf / docs / chore / security) on every push that warrants a
-version bump.
-
 ---
 
-## Issues, questions, source code
+## Issues, questions, dbmazz docs
 
 This is a release-only repository. For everything else, go to
 [ez-cdc/dbmazz](https://github.com/ez-cdc/dbmazz):
